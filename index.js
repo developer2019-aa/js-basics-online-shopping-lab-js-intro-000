@@ -21,12 +21,12 @@ const addToCart = (itemName) => {
 }
 
 const viewCart = () => {
+  if (cart.length === 0) return "Your shopping cart is empty.";
+
   let items = [];
   let endStr = 'and ';
   let endItem = cart[cart.length-1]["itemName"];
   let endPrice = cart[cart.length-1]["itemPrice"];
-
-  if (cart.length === 0) console.log("Your shopping cart is empty.");
 
     for (let i = 0; i < cart.length-1; i++) {
       let item = cart[i]["itemName"];
@@ -34,10 +34,10 @@ const viewCart = () => {
       items.push(`${item} at $${price}`);
     }
     if (cart.length === 1){
-      console.log(`In your cart, you have ${cart[0]["itemName"]} at $${cart[0]["itemPrice"]}.`);
+      return `In your cart, you have ${cart[0]["itemName"]} at $${cart[0]["itemPrice"]}.`;
     } else {
       endStr += `${endItem} at $${endPrice}`;
-      console.log(`In your cart, you have ${items.join(", ")}, ${endStr}.`);
+      return `In your cart, you have ${items.join(", ")}, ${endStr}.`;
     }
   }
 
